@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/bishe.iml" filepath="$PROJECT_DIR$/.idea/bishe.iml" />
+      <module fileurl="file://D:/python_code/.idea/python_code.iml" filepath="D:/python_code/.idea/python_code.iml" />
+    </modules>
+  </component>
+</project>

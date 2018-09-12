@@ -1,0 +1,1021 @@
+{% load static %}
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en">
+<!--<![endif]-->
+
+<!-- Mirrored from seantheme.com/color-admin-v1.9/admin/html/index.html by HTTrack Website Copier/3.x [XR&CO'2013], Sun, 31 Jan 2016 14:30:59 GMT -->
+<head>
+	<meta charset="utf-8" />
+	<title>大学生就业管理平台</title>
+	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
+	<meta content="" name="description" />
+	<meta content="" name="author" />
+
+	<!-- ================== BEGIN BASE CSS STYLE ================== -->
+{#	<link href="{% static "fonts.googleapis.com/cssff98?family=Open+Sans:300,400,600,700" %}" rel="stylesheet" />#}
+	<link href="{% static "assets/plugins/jquery-ui/themes/base/minified/jquery-ui.min.css" %}" rel="stylesheet" />
+	<link href="{% static "assets/plugins/bootstrap/css/bootstrap.min.css" %}" rel="stylesheet" />
+	<link href="{% static "assets/plugins/font-awesome/css/font-awesome.min.css" %}" rel="stylesheet" />
+	<link href="{% static "assets/css/animate.min.css" %}" rel="stylesheet" />
+	<link href="{% static "assets/css/style.min.css" %}" rel="stylesheet" />
+	<link href="{% static "assets/css/style-responsive.min.css" %}" rel="stylesheet" />
+	<link href="{% static "assets/css/theme/default.css" %}" rel="stylesheet" id="theme" />
+	<!-- ================== END BASE CSS STYLE ================== -->
+
+	<!-- ================== BEGIN PAGE LEVEL STYLE ================== -->
+	<link href="{% static "assets/plugins/jquery-jvectormap/jquery-jvectormap-1.2.2.css" %}" rel="stylesheet" />
+	<link href="{% static "assets/plugins/bootstrap-datepicker/css/datepicker.css" %}" rel="stylesheet" />
+	<link href="{% static "assets/plugins/bootstrap-datepicker/css/datepicker3.css" %}" rel="stylesheet" />
+    <link href="{% static "assets/plugins/gritter/css/jquery.gritter.css" %}" rel="stylesheet" />
+    <link href="{% static "assets/css/index.css" %}" rel="stylesheet" />
+    <link href="{% static "assets/css/css.css" %}" rel="stylesheet" />
+	<!-- ================== END PAGE LEVEL STYLE ================== -->
+
+	<!-- ================== BEGIN BASE JS ================== -->
+	<script src="{% static "assets/plugins/pace/pace.min.js" %}"></script>
+	<script src="{% static "assets/js/animate.js" %}"></script>
+	<script src="{% static "assets/js/slider.js" %}"></script>
+	<!-- ================== END BASE JS ================== -->
+</head>
+<body>
+	<!-- begin #page-loader -->
+	<div id="page-loader" class="fade in"><span class="spinner"></span></div>
+	<!-- end #page-loader -->
+
+	<!-- begin #page-container -->
+	<div id="page-container" class="fade page-sidebar-fixed page-header-fixed">
+		<!-- begin #header -->
+		<div id="header" class="header navbar navbar-default navbar-fixed-top">
+			<!-- begin container-fluid -->
+			<div class="container-fluid">
+				<!-- begin mobile sidebar expand / collapse button -->
+				<div class="navbar-header">
+					<a href="index.html" class="navbar-brand"><span class="navbar-logo"></span>
+{#                        {% if request.user %}#}
+{#                            {{ user.username }}#}
+{#                        {% else %}#}
+{#                            用户未登录#}
+{#                        {% endif %}#}
+{#                        guankaixin#}
+                        就业管理平台
+                    </a>
+					<button type="button" class="navbar-toggle" data-click="sidebar-toggled">
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+				</div>
+				<!-- end mobile sidebar expand / collapse button -->
+
+				<!-- begin header navigation right -->
+				<ul class="nav navbar-nav navbar-right">
+					<li>
+						<form class="navbar-form full-width">
+							<div class="form-group">
+								<input type="text" class="form-control" placeholder="Enter keyword" />
+								<button type="submit" class="btn btn-search"><i class="fa fa-search"></i></button>
+							</div>
+						</form>
+					</li>
+
+					<li class="dropdown navbar-user">
+						<a href="javascript:" class="dropdown-toggle" data-toggle="dropdown">
+							<img src="{% static "assets/img/user-13.jpg" %}"  alt="" />
+							<span class="hidden-xs">
+                                {% if request.user %}
+                                    {{ user.username }}
+                                {% else %}
+                                    用户未登录
+                                {% endif %}
+{#                                guankaixin#}
+                            </span> <b class="caret"></b>
+						</a>
+						<ul class="dropdown-menu animated fadeInLeft">
+							<li class="arrow"></li>
+{#							<li><a href="javascript:">Edit Profile</a></li>#}
+{#							<li><a href="javascript:"><span class="badge badge-danger pull-right">2</span> Inbox</a></li>#}
+{#							<li><a href="javascript:">Calendar</a></li>#}
+{#							<li><a href="javascript:">Setting</a></li>#}
+{#							<li class="divider"></li>#}
+							<li><a href="/bishe/login/">Log Out</a></li>
+						</ul>
+					</li>
+				</ul>
+				<!-- end header navigation right -->
+			</div>
+			<!-- end container-fluid -->
+		</div>
+		<!-- end #header -->
+
+		<!-- begin #sidebar -->
+		<div id="sidebar" class="sidebar">
+			<!-- begin sidebar scrollbar -->
+			<div data-scrollbar="true" data-height="100%">
+				<!-- begin sidebar user -->
+				<ul class="nav">
+					<li class="nav-profile">
+						<div class="image">
+							<a href="javascript:"><img src="{% static "assets/img/user-13.jpg" %}" alt="" /></a>
+						</div>
+						<div class="info">
+							{% if request.user %}
+                                {{ user.username }}
+                            {% else %}
+                                用户未登录
+                            {% endif %}
+                            <small>{{ db_signature }}</small>
+{#                            guankaixin#}
+						</div>
+					</li>
+				</ul>
+				<!-- end sidebar user -->
+				<!-- begin sidebar nav -->
+                <ul class="nav">
+					<li class="nav-header">Navigation</li>
+                    <li  class="active"><a href="/bishe/index"><i class="fa fa-calendar"></i> <span>首页</span></a></li>
+					<li class="has-sub">
+						<a href="javascript:">
+						    <b class="caret pull-right"></b>
+						    <i class="fa fa-laptop"></i>
+						    <span>基本信息</span>
+					    </a>
+						<ul class="sub-menu">
+						    <li><a href="/bishe/school_look_self_info">基本信息</a></li>
+						    <li><a href="/bishe/school_update_self_info">修改信息</a></li>
+						</ul>
+					</li>
+					<li><a href="/bishe/school_check_info/"><i class="fa fa-calendar"></i> <span>查看学生登记信息</span></a></li>
+                    <li><a href="/bishe/school_all_positions/"><i class="fa fa-calendar"></i> <span>职位信息</span></a></li>
+					<li class="has-sub">
+						<a href="javascript:">
+						    <b class="caret pull-right"></b>
+						    <i class="fa fa-th"></i>
+						    <span>讨论区  <span class="label label-theme m-l-5">热</span></span>
+						</a>
+						<ul class="sub-menu">
+                            <li><a href="/bishe/school_published_discusses">发表讨论</a></li>
+                            <li><a href="/bishe/school_myself_discuss">我的讨论</a></li>
+                            <li><a href="/bishe/school_all_discuss">全部讨论</a></li>
+						</ul>
+					</li>
+			        <!-- begin sidebar minify button -->
+                </ul>
+            </div>
+        </div>
+		<div class="sidebar-bg"></div>
+		<!-- end #sidebar -->
+		<div id="content" class="content">
+			<!-- begin breadcrumb -->
+			<ol class="breadcrumb pull-right">
+				<li><a href="javascript:;">首页</a></li>
+				<li class="active">
+                    {% if request.user %}
+                        {{ user.username }}
+                    {% else %}
+                        用户未登录
+                    {% endif %}
+                </li>
+			</ol>
+			<!-- end breadcrumb -->
+			<!-- begin page-header -->
+			<h1 class="page-header">
+                {% if request.user %}
+                    {{ user.username }}
+                {% else %}
+                    用户未登录
+                {% endif %}
+                <small>欢迎!</small></h1>
+			<!-- end page-header -->
+
+			<!-- begin row -->
+			<div class="row">
+				<!-- begin col-3 -->
+				<div class="col-md-12 col-sm-12">
+					<ul class="nav nav-tabs" style="padding-left :22%;">
+						<li class=""><a href="#general-tab" data-toggle="tab" aria-expanded="false"><i class="fa fa-fw fa-cogs"></i> <span class="hidden-xs">首页</span></a></li>
+						<li class="active"><a href="#text-font-tab" data-toggle="tab" aria-expanded="true"><i class="fa fa-fw fa-font"></i> <span class="hidden-xs">公司</span></a></li>
+						<li class=""><a href="#margin-tab" data-toggle="tab" aria-expanded="false"><i class="fa fa-fw fa-arrows"></i> <span class="hidden-xs">职位</span></a></li>
+						<li class=""><a href="#padding-tab" data-toggle="tab" aria-expanded="false"><i class="fa fa-fw fa-expand"></i> <span class="hidden-xs">分析</span></a></li>
+						<li class=""><a href="#background-tab" data-toggle="tab" aria-expanded="false"><i class="fa fa-fw fa-paint-brush"></i> <span class="hidden-xs">校园</span></a></li>
+					</ul>
+				</div>
+			</div>
+			<!-- end row -->
+			<!-- begin row -->
+			<div class="row">
+				<!-- begin col-8 -->
+				<div class="col-md-12" style="background: #F2F5F4;padding-top:40px">
+					<div class="search-wrapper">
+						<div id="search_box" class="search_box" data-lg-tj-track-code="index_search" data-lg-tj-track-type="1">
+							<form id="searchForm" class="searchForm clearfix" name="searchForm" action="https://www.lagou.com/jobs/list_" method="get">
+								<input type="text" id="search_input" class="searchInput " tabindex="1" maxlength="64" autocomplete="off" value="" placeholder="搜索职位、公司或地点">
+								<input type="submit" id="search_button" class="search_button" value="搜索" data-lg-tj-id="4V00" data-lg-tj-no="idnull" data-lg-tj-cid="idnull">
+							</form>
+						</div>
+						<div class="pos-guess-wrapper">
+							<div class="guess_wrapper dn">
+								<span></span>
+							</div>
+						</div>
+						<dl class="hotSearch" data-lg-tj-track-code="index_hotsearch" data-lg-tj-track-type="1"><dt>热门搜索：</dt><dd data-lg-tj-id="27u0" data-lg-tj-no="0001" data-lg-tj-cid="null"><a href="https://www.lagou.com/jobs/list_java?labelWords=&amp;fromSearch=true&amp;suginput=" class="highlight" target="_self">JAVA</a></dd><dd data-lg-tj-id="27u0" data-lg-tj-no="0002" data-lg-tj-cid="null"><a href="https://www.lagou.com/jobs/list_%E9%AB%98%E7%BA%A7%E6%B5%8B%E8%AF%95%E5%B7%A5%E7%A8%8B%E5%B8%88%20?labelWords=&amp;fromSearch=true&amp;suginput=" class="highlight" target="_self">高级测试工程师 </a></dd><dd data-lg-tj-id="27u0" data-lg-tj-no="0003" data-lg-tj-cid="null"><a href="http://www.lagou.com/jobs/list_%E4%BA%A7%E5%93%81%E8%BF%90%E8%90%A5?labelWords=&amp;fromSearch=true&amp;suginput" class="highlight" target="_self">产品运营</a></dd><dd data-lg-tj-id="27u0" data-lg-tj-no="0004" data-lg-tj-cid="null"><a href="https://www.lagou.com/zhaopin/PHP/?labelWords=label" class="highlight" target="_self">PHP</a></dd><dd data-lg-tj-id="27u0" data-lg-tj-no="0005" data-lg-tj-cid="null"><a href="https://www.lagou.com/zhaopin/xiaoshoujingli/?labelWords=label" class="highlight" target="_self">销售经理</a></dd><dd data-lg-tj-id="27u0" data-lg-tj-no="0006" data-lg-tj-cid="null"><a href="https://www.lagou.com/zhaopin/chanpinjingli1/?labelWords=label" class="highlight" target="_self">产品经理</a></dd><dd data-lg-tj-id="27u0" data-lg-tj-no="0007" data-lg-tj-cid="null"><a href="https://www.lagou.com/zhaopin/C++/?labelWords=label" class="highlight" target="_self">C++</a></dd><dd data-lg-tj-id="27u0" data-lg-tj-no="0008" data-lg-tj-cid="null"><a href="https://www.lagou.com/jobs/list_java?city=%E5%8C%97%E4%BA%AC&amp;cl=false&amp;fromSearch=true&amp;labelWords=&amp;suginput=" class="highlight" target="_self">Java</a></dd><dd data-lg-tj-id="27u0" data-lg-tj-no="0009" data-lg-tj-cid="null"><a href="http://www.lagou.com/app/download.html?source=search_app" class="highlight">职位</a></dd></dl>
+					</div>
+				</div>
+
+			</div>
+				<!-- end col-8 -->
+             <div class="row">
+				 <div class="col-md-12 col-sm-12" style="height: 450px;padding-top:30px;background: #fff">
+					 <div style="background: pink;width: 80%;height: 100px;">
+						 <div class="wy-slider" id="wy_slider">
+							 <div class="slider">
+								 <div class="slider-top" id="slider_top">
+									 <div class="slider-top-main"><a href="#"><img src="{%  static "assets/img/01.jpg"%}" alt="" class="slider-top-main-img"></a></div>
+									 <div class="slider-top-main"><a href="#"><img src="{%  static "assets/img/02.png"%}" alt="" class="slider-top-main-img"></a></div>
+									 <div class="slider-top-main"><a href="#"><img src="{%  static "assets/img/03.png"%}" alt="" class="slider-top-main-img"></a></div>
+									 <div class="slider-top-main"><a href="#"><img src="{%  static "assets/img/04.png"%}" alt="" class="slider-top-main-img"></a></div>
+								 </div>
+
+								 <div class="slider-bottom" id="slider_ctrl">
+									 <span class="slider-cron-left"></span>
+									 <span class="slider-cron-right"></span>
+								 </div>
+							 </div>
+						 </div>
+					 </div>
+				 </div>
+			 </div>
+				<!-- end col-4 -->
+             <div class="row">
+				 <div class="col-md-12">
+					 <ul class="job_tab module-tabs can-click" id="jobTab" style="background: #fff">
+						 <li class="hotTab currentTop" id="hotJob" data-lg-tj-id="wk00" data-lg-tj-no="idnull" data-lg-tj-cid="idnull">热门职位</li>
+						 <li class="newTab" data-lg-tj-id="wl00" id="newJob" data-lg-tj-no="idnull" data-lg-tj-cid="idnull">最新职位</li>
+						 <!-- 订阅职位的，暂时不上线，先注释掉 -->
+						 <!-- <li class="subscribe-tab">订阅职位</li> -->
+					 </ul>
+					 <div class="job-list-wrapper" id="jobWrapper" >
+						 <div class="hot_posHotPosition position_list init_joblist" id="hot_posHotPosition">
+							 <ul class="clearfix position_list_ul">
+								 <li class="position_list_item default_list" data-jobid="2768498" data-positionid="2768498" data-salary="8k-15k" data-company="诸葛io" data-positionname="大客户销售经理" data-companyid="84244">
+									 <div class="pli_top">
+										 <div class="clearfix pli_top_l">
+											 <div class="position_name fl">
+
+
+												 <h2 class="dib clearfix">
+													 <a href="https://www.lagou.com/jobs/2768498.html" target="_blank" class="position_link fl wordCut" data-index="0" title="大客户销售经理" data-lg-tj-id="rG00" data-lg-tj-no="0001" data-lg-tj-cid="2768498">大客户销售经理</a>
+												 </h2>
+												 <!-- 此处需要和后台确认 -->
+												 <span class="dib create-time"> [1天前发布] </span>
+												 <input type="hidden" class="hr_portrait" value="image1/M00/3D/25/Cgo8PFW3YkCAUfKyAAAip-otlKA765.png">
+											 </div>
+											 <span class="salary fr">8k-15k</span>
+										 </div>
+										 <div class="position_main_info wordCut">
+											 <span>经验3-5年</span>
+											 <span>本科</span>
+										 </div>
+										 <div class="labels">
+											 <div class="pli_btm_l">
+												 <span class="wordCut" title="运营">运营</span>
+												 <span class="wordCut" title="CDN">CDN</span>
+												 <span class="wordCut" title="KA">KA</span>
+											 </div>
+										 </div>
+									 </div>
+									 <div class="pli_btm clearfix">
+										 <a href="https://www.lagou.com/gongsi/84244.html" class="fl" target="_blank" data-lg-tj-id="19vn" data-lg-tj-no="0001" data-lg-tj-cid="84244">
+											 <img src="//www.lgstatic.com/thumbnail_100x100/i/image/M00/0D/4D/Cgp3O1bY_CWANTm5AAAN_6fXVKg238.png" alt="公司logo" class="company-logo" width="40" height="40">
+										 </a>
+
+										 <div class="bottom-right">
+											 <div class="company_name wordCut">
+												 <a href="https://www.lagou.com/gongsi/84244.html" target="_blank" data-lg-tj-id="w700" data-lg-tj-no="0001" data-lg-tj-cid="84244">诸葛io</a>
+											 </div>
+											 <div class="industry wordCut">
+												 <span>企业服务,数据服务</span>
+												 <span>A轮</span>
+												 <span>北京</span>
+
+
+											 </div>
+
+
+										 </div>
+
+									 </div>
+								 </li>
+								 <li class="position_list_item default_list" data-jobid="4437551" data-positionid="4437551" data-salary="30k-60k" data-company="粉笔网" data-positionname="高级 Web 前端开发工程师" data-companyid="63714">
+									 <div class="pli_top">
+										 <div class="clearfix pli_top_l">
+											 <div class="position_name fl">
+
+
+												 <h2 class="dib clearfix">
+													 <a href="https://www.lagou.com/jobs/4437551.html" target="_blank" class="position_link fl wordCut" data-index="1" title="高级 Web 前端开发工程师" data-lg-tj-id="rG00" data-lg-tj-no="0002" data-lg-tj-cid="4437551">高级 Web 前端工程师</a>
+												 </h2>
+												 <!-- 此处需要和后台确认 -->
+												 <span class="dib create-time"> [18:27发布] </span>
+												 <input type="hidden" class="hr_portrait" value="">
+											 </div>
+											 <span class="salary fr">30k-60k</span>
+										 </div>
+										 <div class="position_main_info wordCut">
+											 <span>经验3-5年</span>
+											 <span>硕士</span>
+										 </div>
+										 <div class="labels">
+											 <div class="pli_btm_l">
+												 <span class="wordCut" title="web前端">web前端</span>
+												 <span class="wordCut" title="js">js</span>
+											 </div>
+										 </div>
+									 </div>
+									 <div class="pli_btm clearfix">
+										 <a href="https://www.lagou.com/gongsi/63714.html" class="fl" target="_blank" data-lg-tj-id="19vn" data-lg-tj-no="0002" data-lg-tj-cid="63714">
+											 <img src="//www.lgstatic.com/thumbnail_100x100/i/image/M00/59/0B/CgqKkVfWgPaAdaAxAAAq6WYoG_0975.png" alt="公司logo" class="company-logo" width="40" height="40">
+										 </a>
+
+										 <div class="bottom-right">
+											 <div class="company_name wordCut">
+												 <a href="https://www.lagou.com/gongsi/63714.html" target="_blank" data-lg-tj-id="w700" data-lg-tj-no="0002" data-lg-tj-cid="63714">粉笔网</a>
+											 </div>
+											 <div class="industry wordCut">
+												 <span>移动互联网,教育</span>
+												 <span>不需要融资</span>
+												 <span>北京</span>
+
+
+											 </div>
+
+
+										 </div>
+
+									 </div>
+								 </li>
+								 <li class="position_list_item default_list" data-jobid="4409689" data-positionid="4409689" data-salary="10k-20k" data-company="飞渔科技" data-positionname="高级测试工程师" data-companyid="169838">
+									 <div class="pli_top">
+										 <div class="clearfix pli_top_l">
+											 <div class="position_name fl">
+
+
+												 <h2 class="dib clearfix">
+													 <a href="https://www.lagou.com/jobs/4409689.html" target="_blank" class="position_link fl wordCut" data-index="2" title="高级测试工程师" data-lg-tj-id="rG00" data-lg-tj-no="0003" data-lg-tj-cid="4409689">高级测试工程师</a>
+												 </h2>
+												 <!-- 此处需要和后台确认 -->
+												 <span class="dib create-time"> [2018-05-07] </span>
+												 <input type="hidden" class="hr_portrait" value="">
+												 <input type="hidden" class="hr_name" value="fykjhr">
+												 <input type="hidden" class="hr_position" value="">
+												 <input type="hidden" class="target_hr" value="6948632">
+												 <input type="hidden" class="target_position" value="4409689">
+												 <div class="chat_me" data-index="2" data-lg-tj-id="1WD0" data-lg-tj-no="0003" data-lg-tj-cid="4409689" data-lg-tj-track-code="index_code" data-lg-tj-track-type="1"></div>
+											 </div>
+											 <span class="salary fr">10k-20k</span>
+										 </div>
+										 <div class="position_main_info wordCut">
+											 <span>经验3-5年</span>
+											 <span>本科</span>
+										 </div>
+										 <div class="labels">
+											 <div class="pli_btm_l">
+												 <span class="wordCut" title="python">python</span>
+												 <span class="wordCut" title="自动化">自动化</span>
+											 </div>
+										 </div>
+									 </div>
+									 <div class="pli_btm clearfix">
+										 <a href="https://www.lagou.com/gongsi/169838.html" class="fl" target="_blank" data-lg-tj-id="19vn" data-lg-tj-no="0003" data-lg-tj-cid="169838">
+											 <img src="//www.lgstatic.com/thumbnail_100x100/i/image3/M00/49/43/Cgq2xlrPD1eANBTFAAARxTTs0q4351.jpg" alt="公司logo" class="company-logo" width="40" height="40">
+										 </a>
+
+										 <div class="bottom-right">
+											 <div class="company_name wordCut">
+												 <a href="https://www.lagou.com/gongsi/169838.html" target="_blank" data-lg-tj-id="w700" data-lg-tj-no="0003" data-lg-tj-cid="169838">飞渔科技</a>
+											 </div>
+											 <div class="industry wordCut">
+												 <span>移动互联网,游戏</span>
+												 <span>不需要融资</span>
+												 <span>北京</span>
+
+
+											 </div>
+
+
+										 </div>
+
+									 </div>
+								 </li>
+								 <li class="position_list_item default_list" data-jobid="4219176" data-positionid="4219176" data-salary="10k-20k" data-company="橙啦教育" data-positionname="web前端开发工程师" data-companyid="324431">
+									 <div class="pli_top">
+										 <div class="clearfix pli_top_l">
+											 <div class="position_name fl">
+
+
+												 <h2 class="dib clearfix">
+													 <a href="https://www.lagou.com/jobs/4219176.html" target="_blank" class="position_link fl wordCut" data-index="3" title="web前端开发工程师" data-lg-tj-id="rG00" data-lg-tj-no="0004" data-lg-tj-cid="4219176">web前端开发工程师</a>
+												 </h2>
+												 <!-- 此处需要和后台确认 -->
+												 <span class="dib create-time"> [17:54发布] </span>
+												 <input type="hidden" class="hr_portrait" value="i/image2/M00/41/23/CgoB5lq8xyeAW2ByAAjXuHCWPag784.jpg">
+												 <input type="hidden" class="hr_name" value="Fiona">
+												 <input type="hidden" class="hr_position" value="人力资源经理">
+												 <input type="hidden" class="target_hr" value="9880654">
+												 <input type="hidden" class="target_position" value="4219176">
+												 <div class="chat_me" data-index="3" data-lg-tj-id="1WD0" data-lg-tj-no="0004" data-lg-tj-cid="4219176" data-lg-tj-track-code="index_code" data-lg-tj-track-type="1"></div>
+											 </div>
+											 <span class="salary fr">10k-20k</span>
+										 </div>
+										 <div class="position_main_info wordCut">
+											 <span>经验3-5年</span>
+											 <span>本科</span>
+										 </div>
+										 <div class="labels">
+											 <div class="pli_btm_l">
+												 <span class="wordCut" title="文化娱乐">文化娱乐</span>
+												 <span class="wordCut" title="中级">中级</span>
+												 <span class="wordCut" title="Java">Java</span>
+											 </div>
+										 </div>
+									 </div>
+									 <div class="pli_btm clearfix">
+										 <a href="https://www.lagou.com/gongsi/324431.html" class="fl" target="_blank" data-lg-tj-id="19vn" data-lg-tj-no="0004" data-lg-tj-cid="324431">
+											 <img src="//www.lgstatic.com/thumbnail_100x100/i/image3/M00/35/52/Cgq2xlqnk9GAdfumAAANGHYng1g677.png" alt="公司logo" class="company-logo" width="40" height="40">
+										 </a>
+
+										 <div class="bottom-right">
+											 <div class="company_name wordCut">
+												 <a href="https://www.lagou.com/gongsi/324431.html" target="_blank" data-lg-tj-id="w700" data-lg-tj-no="0004" data-lg-tj-cid="324431">橙啦教育</a>
+											 </div>
+											 <div class="industry wordCut">
+												 <span>移动互联网,教育</span>
+												 <span>不需要融资</span>
+												 <span>北京</span>
+
+
+											 </div>
+
+
+										 </div>
+
+									 </div>
+								 </li>
+								 <li class="position_list_item default_list" data-jobid="4052839" data-positionid="4052839" data-salary="15k-25k" data-company="妈妈网" data-positionname="大客户销售经理" data-companyid="3346">
+									 <div class="pli_top">
+										 <div class="clearfix pli_top_l">
+											 <div class="position_name fl">
+
+
+												 <h2 class="dib clearfix">
+													 <a href="https://www.lagou.com/jobs/4052839.html" target="_blank" class="position_link fl wordCut" data-index="4" title="大客户销售经理" data-lg-tj-id="rG00" data-lg-tj-no="0005" data-lg-tj-cid="4052839">大客户销售经理</a>
+												 </h2>
+												 <!-- 此处需要和后台确认 -->
+												 <span class="dib create-time"> [17:54发布] </span>
+												 <input type="hidden" class="hr_portrait" value="">
+												 <input type="hidden" class="hr_name" value="hr">
+												 <input type="hidden" class="hr_position" value="HR">
+												 <input type="hidden" class="target_hr" value="31756">
+												 <input type="hidden" class="target_position" value="4052839">
+												 <div class="chat_me" data-index="4" data-lg-tj-id="1WD0" data-lg-tj-no="0005" data-lg-tj-cid="4052839" data-lg-tj-track-code="index_code" data-lg-tj-track-type="1"></div>
+											 </div>
+											 <span class="salary fr">15k-25k</span>
+										 </div>
+										 <div class="position_main_info wordCut">
+											 <span>经验3-5年</span>
+											 <span>本科</span>
+										 </div>
+										 <div class="labels">
+											 <div class="pli_btm_l">
+												 <span class="wordCut" title="媒体">媒体</span>
+												 <span class="wordCut" title="广告营销">广告营销</span>
+												 <span class="wordCut" title="大客户管理">大客户管理</span>
+											 </div>
+										 </div>
+									 </div>
+									 <div class="pli_btm clearfix">
+										 <a href="https://www.lagou.com/gongsi/3346.html" class="fl" target="_blank" data-lg-tj-id="19vn" data-lg-tj-no="0005" data-lg-tj-cid="3346">
+											 <img src="//www.lgstatic.com/thumbnail_100x100/i/image/M00/10/3E/CgpEMljrCN-AEwF5AAAr_ojLdYY305.jpg" alt="公司logo" class="company-logo" width="40" height="40">
+										 </a>
+
+										 <div class="bottom-right">
+											 <div class="company_name wordCut">
+												 <a href="https://www.lagou.com/gongsi/3346.html" target="_blank" data-lg-tj-id="w700" data-lg-tj-no="0005" data-lg-tj-cid="3346">妈妈网</a>
+											 </div>
+											 <div class="industry wordCut">
+												 <span>移动互联网,社交网络</span>
+												 <span>上市公司</span>
+												 <span>北京</span>
+
+
+											 </div>
+
+
+										 </div>
+
+									 </div>
+								 </li>
+								 <li class="position_list_item default_list" data-jobid="4595401" data-positionid="4595401" data-salary="13k-18k" data-company="励云科技" data-positionname="C#工程师" data-companyid="166774">
+									 <div class="pli_top">
+										 <div class="clearfix pli_top_l">
+											 <div class="position_name fl">
+
+
+												 <h2 class="dib clearfix">
+													 <a href="https://www.lagou.com/jobs/4595401.html" target="_blank" class="position_link fl wordCut" data-index="5" title="C#工程师" data-lg-tj-id="rG00" data-lg-tj-no="0006" data-lg-tj-cid="4595401">C#工程师</a>
+												 </h2>
+												 <!-- 此处需要和后台确认 -->
+												 <span class="dib create-time"> [17:53发布] </span>
+												 <input type="hidden" class="hr_portrait" value="">
+												 <input type="hidden" class="hr_name" value="jack.xu">
+												 <input type="hidden" class="hr_position" value="">
+												 <input type="hidden" class="target_hr" value="6794001">
+												 <input type="hidden" class="target_position" value="4595401">
+												 <div class="chat_me" data-index="5" data-lg-tj-id="1WD0" data-lg-tj-no="0006" data-lg-tj-cid="4595401" data-lg-tj-track-code="index_code" data-lg-tj-track-type="1"></div>
+											 </div>
+											 <span class="salary fr">13k-18k</span>
+										 </div>
+										 <div class="position_main_info wordCut">
+											 <span>经验3-5年</span>
+											 <span>大专</span>
+										 </div>
+										 <div class="labels">
+											 <div class="pli_btm_l">
+												 <span class="wordCut" title="高级">高级</span>
+												 <span class="wordCut" title="中级">中级</span>
+												 <span class="wordCut" title="初级">初级</span>
+											 </div>
+										 </div>
+									 </div>
+									 <div class="pli_btm clearfix">
+										 <a href="https://www.lagou.com/gongsi/166774.html" class="fl" target="_blank" data-lg-tj-id="19vn" data-lg-tj-no="0006" data-lg-tj-cid="166774">
+											 <img src="//www.lgstatic.com/thumbnail_100x100/i/image2/M00/1A/D3/CgotOVoBh-mAVyEsAAAMyecpvrg300.gif" alt="公司logo" class="company-logo" width="40" height="40">
+										 </a>
+
+										 <div class="bottom-right">
+											 <div class="company_name wordCut">
+												 <a href="https://www.lagou.com/gongsi/166774.html" target="_blank" data-lg-tj-id="w700" data-lg-tj-no="0006" data-lg-tj-cid="166774">励云科技</a>
+											 </div>
+											 <div class="industry wordCut">
+												 <span>移动互联网,数据服务</span>
+												 <span>不需要融资</span>
+												 <span>北京</span>
+
+
+											 </div>
+
+
+										 </div>
+
+									 </div>
+								 </li>
+							 </ul>
+						 </div>
+						 <div class="hot_posHotPosition position_list "></div>
+					 </div>
+					 <div class="new_posHotPosition position_list"  data-lg-tj-track-code="index_lastjob" data-lg-tj-track-type="1" id="jobNew">
+						 <ul class="clearfix position_list_ul">
+							 <li class="position_list_item default_list" data-jobid="4426905" data-positionid="4426905" data-salary="9k-11k" data-company="智诚合创" data-positionname="京东运营" data-companyid="109501">
+
+								 <div class="pli_top">
+									 <div class="clearfix pli_top_l">
+										 <div class="position_name fl">
+											 <h2 class="dib clearfix">
+												 <a href="https://www.lagou.com/jobs/4426905.html" target="_blank" class="position_link fl wordCut" data-index="0" title="京东运营" data-lg-tj-id="4q00" data-lg-tj-no="0001" data-lg-tj-cid="4426905">京东运营</a>
+											 </h2>
+											 <!-- 此处需要和后台确认 -->
+											 <span class="dib create-time"> [13:01发布] </span>
+
+											 <input type="hidden" class="hr_portrait" value="">
+										 </div>
+										 <span class="salary fr">9k-11k</span>
+
+									 </div>
+									 <div class="position_main_info wordCut">
+										 <span>经验3-5年</span>
+										 <span>大专</span>
+									 </div>
+									 <div class="labels">
+										 <div class="pli_btm_l">
+											 <span class="wordCut" title="电商">电商</span>
+											 <span class="wordCut" title="高级">高级</span>
+											 <span class="wordCut" title="淘宝">淘宝</span>
+										 </div>
+									 </div>
+								 </div>
+								 <div class="pli_btm clearfix">
+									 <a href="https://www.lagou.com/gongsi/109501.html" class="fl" target="_blank" data-lg-tj-id="19vp" data-lg-tj-no="0001" data-lg-tj-cid="109501">
+										 <img src="//www.lgstatic.com/thumbnail_100x100/i/image2/M00/4A/02/CgoB5lrqY3eARxULAACr0ohBopQ261.jpg" alt="公司logo" class="company-logo" width="40" height="40">
+									 </a>
+
+									 <div class="bottom-right">
+										 <div class="company_name wordCut">
+											 <a href="https://www.lagou.com/gongsi/109501.html" target="_blank" data-lg-tj-id="4r00" data-lg-tj-no="0001" data-lg-tj-cid="109501">智诚合创</a>
+										 </div>
+										 <div class="industry wordCut">
+											 <span>电子商务,O2O</span>
+											 <span>未融资</span>
+											 <span>北京</span>
+
+
+										 </div>
+
+
+									 </div>
+								 </div>
+							 </li>
+							 <li class="position_list_item default_list" data-jobid="4409773" data-positionid="4409773" data-salary="8k-12k" data-company="珠海唯美网络科技有限公司" data-positionname="Android开发工程师" data-companyid="46332">
+
+								 <div class="pli_top">
+									 <div class="clearfix pli_top_l">
+										 <div class="position_name fl">
+											 <h2 class="dib clearfix">
+												 <a href="https://www.lagou.com/jobs/4409773.html" target="_blank" class="position_link fl wordCut" data-index="1" title="Android开发工程师" data-lg-tj-id="4q00" data-lg-tj-no="0002" data-lg-tj-cid="4409773">Android开发工程师</a>
+											 </h2>
+											 <!-- 此处需要和后台确认 -->
+											 <span class="dib create-time"> [13:00发布] </span>
+
+											 <input type="hidden" class="hr_portrait" value="i/image2/M00/39/84/CgotOVpNqaSARpMYAACO0esNIc4912.png">
+										 </div>
+										 <span class="salary fr">8k-12k</span>
+
+									 </div>
+									 <div class="position_main_info wordCut">
+										 <span>经验1-3年</span>
+										 <span>本科</span>
+									 </div>
+									 <div class="labels">
+										 <div class="pli_btm_l">
+											 <span class="wordCut" title="VR">VR</span>
+											 <span class="wordCut" title="移动端">移动端</span>
+											 <span class="wordCut" title="Java">Java</span>
+										 </div>
+									 </div>
+								 </div>
+								 <div class="pli_btm clearfix">
+									 <a href="https://www.lagou.com/gongsi/46332.html" class="fl" target="_blank" data-lg-tj-id="19vp" data-lg-tj-no="0002" data-lg-tj-cid="46332">
+										 <img src="//www.lgstatic.com/thumbnail_100x100/i/image/M00/5A/B2/CgpFT1mNEd2AJUTtAAB4c-C3NCo828.jpg" alt="公司logo" class="company-logo" width="40" height="40">
+									 </a>
+
+									 <div class="bottom-right">
+										 <div class="company_name wordCut">
+											 <a href="https://www.lagou.com/gongsi/46332.html" target="_blank" data-lg-tj-id="4r00" data-lg-tj-no="0002" data-lg-tj-cid="46332">珠海唯美网络科技有限公司</a>
+										 </div>
+										 <div class="industry wordCut">
+											 <span>移动互联网,电子商务</span>
+											 <span>天使轮</span>
+											 <span>珠海</span>
+
+
+										 </div>
+
+
+									 </div>
+								 </div>
+							 </li>
+							 <li class="position_list_item default_list" data-jobid="4424251" data-positionid="4424251" data-salary="15k-20k" data-company="石竹软件" data-positionname="高级后端JAVA开发" data-companyid="124751">
+
+								 <div class="pli_top">
+									 <div class="clearfix pli_top_l">
+										 <div class="position_name fl">
+											 <h2 class="dib clearfix">
+												 <a href="https://www.lagou.com/jobs/4424251.html" target="_blank" class="position_link fl wordCut" data-index="2" title="高级后端JAVA开发" data-lg-tj-id="4q00" data-lg-tj-no="0003" data-lg-tj-cid="4424251">高级后端JAVA开发</a>
+											 </h2>
+											 <!-- 此处需要和后台确认 -->
+											 <span class="dib create-time"> [12:54发布] </span>
+
+											 <input type="hidden" class="hr_portrait" value="">
+											 <input type="hidden" class="hr_name" value="黄小姐">
+											 <input type="hidden" class="hr_position" value="人事专员">
+											 <input type="hidden" class="target_hr" value="4806668">
+											 <input type="hidden" class="target_position" value="4424251">
+											 <div class="chat_me" data-index="2" data-lg-tj-id="1WE0" data-lg-tj-no="0003" data-lg-tj-cid="4424251" data-lg-tj-track-code="index_code" data-lg-tj-track-type="1"></div>
+										 </div>
+										 <span class="salary fr">15k-20k</span>
+
+									 </div>
+									 <div class="position_main_info wordCut">
+										 <span>经验3-5年</span>
+										 <span>本科</span>
+									 </div>
+									 <div class="labels">
+										 <div class="pli_btm_l">
+											 <span class="wordCut" title="MySQL">MySQL</span>
+											 <span class="wordCut" title="j2ee">j2ee</span>
+										 </div>
+									 </div>
+								 </div>
+								 <div class="pli_btm clearfix">
+									 <a href="https://www.lagou.com/gongsi/124751.html" class="fl" target="_blank" data-lg-tj-id="19vp" data-lg-tj-no="0003" data-lg-tj-cid="124751">
+										 <img src="//www.lgstatic.com/thumbnail_100x100/i/image/M00/4E/59/CgqKkVeq0LKANvyPAAAxCsPvLrA059.jpg" alt="公司logo" class="company-logo" width="40" height="40">
+									 </a>
+
+									 <div class="bottom-right">
+										 <div class="company_name wordCut">
+											 <a href="https://www.lagou.com/gongsi/124751.html" target="_blank" data-lg-tj-id="4r00" data-lg-tj-no="0003" data-lg-tj-cid="124751">石竹软件</a>
+										 </div>
+										 <div class="industry wordCut">
+											 <span>企业服务,数据服务</span>
+											 <span>不需要融资</span>
+											 <span>广州</span>
+
+
+										 </div>
+
+
+									 </div>
+								 </div>
+							 </li>
+							 <li class="position_list_item default_list" data-jobid="4412799" data-positionid="4412799" data-salary="7k-12k" data-company="山东车微联" data-positionname="产品经理" data-companyid="29192">
+
+								 <div class="pli_top">
+									 <div class="clearfix pli_top_l">
+										 <div class="position_name fl">
+											 <h2 class="dib clearfix">
+												 <a href="https://www.lagou.com/jobs/4412799.html" target="_blank" class="position_link fl wordCut" data-index="3" title="产品经理" data-lg-tj-id="4q00" data-lg-tj-no="0004" data-lg-tj-cid="4412799">产品经理</a>
+											 </h2>
+											 <!-- 此处需要和后台确认 -->
+											 <span class="dib create-time"> [12:53发布] </span>
+
+											 <input type="hidden" class="hr_portrait" value="i/image3/M00/2B/1D/Cgq2xlqd6B2ASDZYAAAhT2GNagE056.jpg">
+											 <input type="hidden" class="hr_name" value="车微联">
+											 <input type="hidden" class="hr_position" value="山东车微联">
+											 <input type="hidden" class="target_hr" value="401927">
+											 <input type="hidden" class="target_position" value="4412799">
+											 <div class="chat_me" data-index="3" data-lg-tj-id="1WE0" data-lg-tj-no="0004" data-lg-tj-cid="4412799" data-lg-tj-track-code="index_code" data-lg-tj-track-type="1"></div>
+										 </div>
+										 <span class="salary fr">7k-12k</span>
+
+									 </div>
+									 <div class="position_main_info wordCut" style="display: inline-block">
+										 <span>经验3-5年</span>
+										 <span>大专</span>
+									 </div>
+									 <div class="labels">
+										 <div class="pli_btm_l">
+											 <span class="wordCut" title="金融">金融</span>
+											 <span class="wordCut" title="信息安全">信息安全</span>
+											 <span class="wordCut" title="教育">教育</span>
+										 </div>
+									 </div>
+								 </div>
+								 <div class="pli_btm clearfix">
+									 <a href="https://www.lagou.com/gongsi/29192.html" class="fl" target="_blank" data-lg-tj-id="19vp" data-lg-tj-no="0004" data-lg-tj-cid="29192">
+										 <img src="//www.lgstatic.com/thumbnail_100x100/i/image/M00/57/12/CgqKkVfONtSANA_uAABcsQC61sw263.png" alt="公司logo" class="company-logo" width="40" height="40">
+									 </a>
+
+									 <div class="bottom-right">
+										 <div class="company_name wordCut">
+											 <a href="https://www.lagou.com/gongsi/29192.html" target="_blank" data-lg-tj-id="4r00" data-lg-tj-no="0004" data-lg-tj-cid="29192">山东车微联</a>
+										 </div>
+										 <div class="industry wordCut">
+											 <span>移动互联网</span>
+											 <span>上市公司</span>
+											 <span>济南</span>
+
+
+										 </div>
+
+
+									 </div>
+								 </div>
+							 </li>
+							 <li class="position_list_item default_list" data-jobid="4400448" data-positionid="4400448" data-salary="15K-30K" data-company="iCourt" data-positionname="测试工程师" data-companyid="58537">
+
+								 <div class="pli_top">
+									 <div class="clearfix pli_top_l">
+										 <div class="position_name fl">
+											 <h2 class="dib clearfix">
+												 <a href="https://www.lagou.com/jobs/4400448.html" target="_blank" class="position_link fl wordCut" data-index="4" title="测试工程师" data-lg-tj-id="4q00" data-lg-tj-no="0005" data-lg-tj-cid="4400448">测试工程师</a>
+											 </h2>
+											 <!-- 此处需要和后台确认 -->
+											 <span class="dib create-time"> [12:45发布] </span>
+
+
+										 <span class="salary fr">15K-30K</span>
+
+									 </div>
+									 <div class="position_main_info wordCut" style="display: inline-block">
+										 <span>经验3-5年</span>
+										 <span>本科</span>
+									 </div>
+									 <div class="labels">
+										 <div class="pli_btm_l">
+											 <span class="wordCut" title="自动化">自动化</span>
+											 <span class="wordCut" title="性能测试">性能测试</span>
+										 </div>
+									 </div>
+								 </div>
+								 <div class="pli_btm clearfix">
+									 <a href="https://www.lagou.com/gongsi/58537.html" class="fl" target="_blank" data-lg-tj-id="19vp" data-lg-tj-no="0005" data-lg-tj-cid="58537">
+										 <img src="//www.lgstatic.com/thumbnail_100x100/i/image/M00/4A/7A/CgqKkVeazLuAG3oAAABGb-Qbo8U457.jpg" alt="公司logo" class="company-logo" width="40" height="40">
+									 </a>
+
+									 <div class="bottom-right">
+										 <div class="company_name wordCut">
+											 <a href="https://www.lagou.com/gongsi/58537.html" target="_blank" data-lg-tj-id="4r00" data-lg-tj-no="0005" data-lg-tj-cid="58537">iCourt</a>
+										 </div>
+										 <div class="industry wordCut">
+											 <span>教育</span>
+											 <span>不需要融资</span>
+											 <span>北京</span>
+										 </div>
+									 </div>
+								 </div>
+								 </div>
+							 </li>
+							 <li class="position_list_item default_list" data-jobid="4424407" data-positionid="4424407" data-salary="20k-40k" data-company="玩吧" data-positionname="反作弊专家" data-companyid="95651">
+
+								 <div class="pli_top">
+									 <div class="clearfix pli_top_l">
+										 <div class="position_name fl">
+											 <h2 class="dib clearfix">
+												 <a href="https://www.lagou.com/jobs/4424407.html" target="_blank" class="position_link fl wordCut" data-index="5" title="反作弊专家" data-lg-tj-id="4q00" data-lg-tj-no="0006" data-lg-tj-cid="4424407">反作弊专家</a>
+											 </h2>
+											 <!-- 此处需要和后台确认 -->
+											 <span class="dib create-time"> [12:41发布] </span>
+										 <span class="salary fr">20k-40k</span>
+									 </div>
+									 <div class="position_main_info wordCut" style="display: inline-block">
+										 <span>经验3-5年</span>
+										 <span>本科</span>
+									 </div>
+									 <div class="labels">
+										 <div class="pli_btm_l">
+											 <span class="wordCut" title="社交">社交</span>
+											 <span class="wordCut" title="直播">直播</span>
+											 <span class="wordCut" title="信息安全">信息安全</span>
+										 </div>
+									 </div>
+								 </div>
+								 <div class="pli_btm clearfix">
+									 <a href="https://www.lagou.com/gongsi/95651.html" class="fl" target="_blank" data-lg-tj-id="19vp" data-lg-tj-no="0006" data-lg-tj-cid="95651">
+										 <img src="//www.lgstatic.com/thumbnail_100x100/i/image/M00/7B/73/CgqKkVhCuE6AMhXaAAAc4KLBL5k821.png" alt="公司logo" class="company-logo" width="40" height="40">
+									 </a>
+
+									 <div class="bottom-right">
+										 <div class="company_name wordCut">
+											 <a href="https://www.lagou.com/gongsi/95651.html" target="_blank" data-lg-tj-id="4r00" data-lg-tj-no="0006" data-lg-tj-cid="95651">玩吧</a>
+										 </div>
+										 <div class="industry wordCut">
+											 <span>移动互联网,社交网络</span>
+											 <span>B轮</span>
+											 <span>北京</span>
+										 </div>
+									 </div>
+								 </div>
+								 </div>
+							 </li>
+						 </ul>
+					 </div>
+				 </div>
+			 </div>
+		<!-- begin #content -->
+
+		<!-- end #content -->
+
+        <!-- begin theme-panel -->
+        <div class="theme-panel">
+            <a href="javascript:" data-click="theme-panel-expand" class="theme-collapse-btn"><i class="fa fa-cog"></i></a>
+            <div class="theme-panel-content">
+                <h5 class="m-t-0">Color Theme</h5>
+                <ul class="theme-list clearfix">
+                    <li class="active"><a href="javascript:" class="bg-green" data-theme="default" data-click="theme-selector" data-toggle="tooltip" data-trigger="hover" data-container="body" data-title="Default">&nbsp;</a></li>
+                    <li><a href="javascript:" class="bg-red" data-theme="red" data-click="theme-selector" data-toggle="tooltip" data-trigger="hover" data-container="body" data-title="Red">&nbsp;</a></li>
+                    <li><a href="javascript:" class="bg-blue" data-theme="blue" data-click="theme-selector" data-toggle="tooltip" data-trigger="hover" data-container="body" data-title="Blue">&nbsp;</a></li>
+                    <li><a href="javascript:" class="bg-purple" data-theme="purple" data-click="theme-selector" data-toggle="tooltip" data-trigger="hover" data-container="body" data-title="Purple">&nbsp;</a></li>
+                    <li><a href="javascript:" class="bg-orange" data-theme="orange" data-click="theme-selector" data-toggle="tooltip" data-trigger="hover" data-container="body" data-title="Orange">&nbsp;</a></li>
+                    <li><a href="javascript:" class="bg-black" data-theme="black" data-click="theme-selector" data-toggle="tooltip" data-trigger="hover" data-container="body" data-title="Black">&nbsp;</a></li>
+                </ul>
+                <div class="divider"></div>
+                <div class="row m-t-10">
+                    <div class="col-md-5 control-label double-line">Header Styling</div>
+                    <div class="col-md-7">
+                        <select name="header-styling" class="form-control input-sm">
+                            <option value="1">default</option>
+                            <option value="2">inverse</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row m-t-10">
+                    <div class="col-md-5 control-label">Header</div>
+                    <div class="col-md-7">
+                        <select name="header-fixed" class="form-control input-sm">
+                            <option value="1">fixed</option>
+                            <option value="2">default</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row m-t-10">
+                    <div class="col-md-5 control-label double-line">Sidebar Styling</div>
+                    <div class="col-md-7">
+                        <select name="sidebar-styling" class="form-control input-sm">
+                            <option value="1">default</option>
+                            <option value="2">grid</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row m-t-10">
+                    <div class="col-md-5 control-label">Sidebar</div>
+                    <div class="col-md-7">
+                        <select name="sidebar-fixed" class="form-control input-sm">
+                            <option value="1">fixed</option>
+                            <option value="2">default</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row m-t-10">
+                    <div class="col-md-5 control-label double-line">Sidebar Gradient</div>
+                    <div class="col-md-7">
+                        <select name="content-gradient" class="form-control input-sm">
+                            <option value="1">disabled</option>
+                            <option value="2">enabled</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row m-t-10">
+                    <div class="col-md-5 control-label double-line">Content Styling</div>
+                    <div class="col-md-7">
+                        <select name="content-styling" class="form-control input-sm">
+                            <option value="1">default</option>
+                            <option value="2">black</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row m-t-10">
+                    <div class="col-md-12">
+                        <a href="#" class="btn btn-inverse btn-block btn-sm" data-click="reset-local-storage"><i class="fa fa-refresh m-r-3"></i> Reset Local Storage</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end theme-panel -->
+
+		<!-- begin scroll to top btn -->
+		<a href="javascript:" class="btn btn-icon btn-circle btn-success btn-scroll-to-top fade" data-click="scroll-top"><i class="fa fa-angle-up"></i></a>
+		<!-- end scroll to top btn -->
+	</div>
+	<!-- end page container -->
+
+	<!-- ================== BEGIN BASE JS ================== -->
+	<script src="{% static "assets/plugins/jquery/jquery-1.9.1.min.js"%}"></script>
+	<script src="{% static "assets/plugins/jquery/jquery-migrate-1.1.0.min.js"%}"></script>
+	<script src="{% static "assets/plugins/jquery-ui/ui/minified/jquery-ui.min.js"%}"></script>
+	<script src="{% static "assets/plugins/bootstrap/js/bootstrap.min.js"%}"></script>
+	<script src="{% static "assets/plugins/slimscroll/jquery.slimscroll.min.js"%}"></script>
+	<script src="{% static "assets/plugins/jquery-cookie/jquery.cookie.js"%}"></script>
+	<!-- ================== END BASE JS ================== -->
+
+	<!-- ================== BEGIN PAGE LEVEL JS ================== -->
+	<script src="{% static "assets/plugins/gritter/js/jquery.gritter.js"%}"></script>
+	<script src="{% static "assets/plugins/flot/jquery.flot.min.js"%}"></script>
+	<script src="{% static "assets/plugins/flot/jquery.flot.time.min.js"%}"></script>
+	<script src="{% static "assets/plugins/flot/jquery.flot.resize.min.js"%}"></script>
+	<script src="{% static "assets/plugins/flot/jquery.flot.pie.min.js"%}"></script>
+	<script src="{% static "assets/plugins/sparkline/jquery.sparkline.js"%}"></script>
+	<script src="{% static "assets/plugins/jquery-jvectormap/jquery-jvectormap-1.2.2.min.js"%}"></script>
+	<script src="{% static "assets/plugins/jquery-jvectormap/jquery-jvectormap-world-mill-en.js"%}"></script>
+	<script src="{% static "assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js"%}"></script>
+{#	<script src="{% static "assets/js/dashboard.min.js"%}"></script>#}
+	<script src="{% static "assets/js/apps.min.js"%}"></script>
+	<!-- ================== END PAGE LEVEL JS ================== -->
+
+	<script>
+		$(document).ready(function() {
+			App.init();
+{#			Dashboard.init();#}
+		});
+	</script>
+	<script>
+{#      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){#}
+{#      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),#}
+{#      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)#}
+{#      })(window,document,'script','../../www.google-analytics.com/analytics.js','ga');#}
+{##}
+{#      ga('create', 'UA-53034621-1', 'auto');#}
+{#      ga('send', 'pageview');#}
+        var jobTab=document.getElementById("jobTab");
+			var hotJob = document.getElementById("hotJob");
+			var newJob= document.getElementById("newJob");
+			var jobWrapper= document.getElementById("jobWrapper");
+			var newList=document.getElementById("jobNew");
+			//alert(jobTab.children[0]);
+			hotJob.onclick = function () {
+                jobWrapper.style.display= 'block';
+                newList.style.display='none';
+                hotJob.className="hotTab currentTop";
+                newJob.className="newTab"
+            },
+            newJob.onclick = function () {
+                jobWrapper.style.display= 'none';
+                newList.style.display='block';
+                hotJob.className="hotTab ";
+                newJob.className="newTab currentTop"
+            }
+    </script>
+</body>
+
+<!-- Mirrored from seantheme.com/color-admin-v1.9/admin/html/index.html by HTTrack Website Copier/3.x [XR&CO'2013], Sun, 31 Jan 2016 14:35:21 GMT -->
+</html>
+

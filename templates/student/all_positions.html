@@ -1,0 +1,435 @@
+{% load static %}
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en">
+<!--<![endif]-->
+
+<!-- Mirrored from seantheme.com/color-admin-v1.9/admin/html/email_inbox.html by HTTrack Website Copier/3.x [XR&CO'2013], Sun, 31 Jan 2016 14:36:28 GMT -->
+<head>
+	<meta charset="utf-8" />
+	<title>大学生就业管理平台</title>
+	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
+	<meta content="" name="description" />
+	<meta content="" name="author" />
+	
+	<!-- ================== BEGIN BASE CSS STYLE ================== -->
+{#	<link href="{% static "fonts.googleapis.com/cssff98?family=Open+Sans:300,400,600,700" %}" rel="stylesheet">#}
+	<link href="{% static "assets/plugins/jquery-ui/themes/base/minified/jquery-ui.min.css"%}" rel="stylesheet" />
+	<link href="{% static "assets/plugins/bootstrap/css/bootstrap.min.css" %}" rel="stylesheet" />
+	<link href="{% static "assets/plugins/font-awesome/css/font-awesome.min.css"%}" rel="stylesheet" />
+	<link href="{% static "assets/css/animate.min.css"%}" rel="stylesheet" />
+	<link href="{% static "assets/css/style.min.css"%}" rel="stylesheet" />
+	<link href="{% static "assets/css/style-responsive.min.css"%}" rel="stylesheet" />
+	<link href="{% static "assets/css/theme/default.css"%}" rel="stylesheet" id="theme" />
+	<!-- ================== END BASE CSS STYLE ================== -->
+	
+	<!-- ================== BEGIN BASE JS ================== -->
+	<script src="{% static "assets/plugins/pace/pace.min.js"%}"></script>
+	<!-- ================== END BASE JS ================== -->
+</head>
+<body>
+	<!-- begin #page-loader -->
+	<div id="page-loader" class="fade in"><span class="spinner"></span></div>
+	<!-- end #page-loader -->
+	
+	<!-- begin #page-container -->
+	<div id="page-container" class="fade page-sidebar-fixed page-header-fixed">
+		<!-- begin #header -->
+		<div id="header" class="header navbar navbar-default navbar-fixed-top">
+			<!-- begin container-fluid -->
+			<div class="container-fluid">
+				<!-- begin mobile sidebar expand / collapse button -->
+				<div class="navbar-header">
+					<a href="index.html" class="navbar-brand"><span class="navbar-logo"></span>
+{#                        {% if request.user %}#}
+{#                            {{ user.username }}#}
+{#                        {% else %}#}
+{#                            用户未登录#}
+{#                        {% endif %}#}
+                        就业管理平台
+                    </a>
+					<button type="button" class="navbar-toggle" data-click="sidebar-toggled">
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+				</div>
+				<!-- end mobile sidebar expand / collapse button -->
+				
+				<!-- begin header navigation right -->
+				<ul class="nav navbar-nav navbar-right">
+					<li>
+						<form class="navbar-form full-width">
+							<div class="form-group">
+								<input type="text" class="form-control" placeholder="Enter keyword" />
+								<button type="submit" class="btn btn-search"><i class="fa fa-search"></i></button>
+							</div>
+						</form>
+					</li>
+					<li class="dropdown navbar-user">
+						<a href="javascript:" class="dropdown-toggle" data-toggle="dropdown">
+							<img src="{% static "assets/img/user-13.jpg"%}" alt="" />
+							<span class="hidden-xs">
+                                {% if request.user %}
+                                    {{ user.username }}
+                                {% else %}
+                                    用户未登录
+                                {% endif %}
+                            </span> <b class="caret"></b>
+						</a>
+						<ul class="dropdown-menu animated fadeInLeft">
+							<li class="arrow"></li>
+							<li><a href="javascript:">Edit Profile</a></li>
+							<li><a href="javascript:"><span class="badge badge-danger pull-right">2</span> Inbox</a></li>
+							<li><a href="javascript:">Calendar</a></li>
+							<li><a href="javascript:">Setting</a></li>
+							<li class="divider"></li>
+							<li><a href="javascript:">Log Out</a></li>
+						</ul>
+					</li>
+				</ul>
+				<!-- end header navigation right -->
+			</div>
+			<!-- end container-fluid -->
+		</div>
+		<!-- end #header -->
+		
+		<!-- begin #sidebar -->
+		<div id="sidebar" class="sidebar">
+			<!-- begin sidebar scrollbar -->
+			<div data-scrollbar="true" data-height="100%">
+				<!-- begin sidebar user -->
+				<ul class="nav">
+					<li class="nav-profile">
+						<div class="image">
+							<a href="javascript:"><img src="{% static "assets/img/user-13.jpg"%}" alt="" /></a>
+						</div>
+						<div class="info">
+							{% if request.user %}
+                                {{ user.username }}
+                            {% else %}
+                                用户未登录
+                            {% endif %}
+                            <small>{{ db_signature }}</small>
+						</div>
+					</li>
+				</ul>
+				<!-- end sidebar user -->
+				<!-- begin sidebar nav -->
+				<ul class="nav">
+					<li class="nav-header">Navigation</li>
+                    <li><a href="/bishe/index"><i class="fa fa-calendar"></i> <span>首页</span></a></li>
+					<li class="has-sub">
+						<a href="javascript:">
+						    <b class="caret pull-right"></b>
+						    <i class="fa fa-laptop"></i>
+						    <span>基本信息</span>
+					    </a>
+						<ul class="sub-menu">
+						    <li><a href="/bishe/look_self_info">基本信息</a></li>
+						    <li><a href="/bishe/update_self_info">修改信息</a></li>
+						</ul>
+					</li>
+					<li class="has-sub">
+						<a href="javascript:">
+						    <b class="caret pull-right"></b>
+						    <i class="fa fa-suitcase"></i>
+						    <span>信息登记
+                            </span>
+						</a>
+						<ul class="sub-menu">
+							<li><a href="/bishe/input_info">学生登记</a></li>
+							<li><a href="/bishe/check_info">查看信息</a></li>
+						</ul>
+					</li>
+					<li  class="active"><a href="/bishe/all_positions/"><i class="fa fa-calendar"></i> <span>职位信息</span></a></li>
+					<li class="has-sub">
+						<a href="javascript:">
+						    <b class="caret pull-right"></b>
+						    <i class="fa fa-th"></i>
+						    <span>讨论区  <span class="label label-theme m-l-5">热</span></span>
+						</a>
+						<ul class="sub-menu">
+                            <li><a href="/bishe/published_discusses">发表讨论</a></li>
+                            <li><a href="/bishe/myself_discuss">我的讨论</a></li>
+                            <li><a href="/bishe/all_discuss">全部讨论</a></li>
+						</ul>
+					</li>
+			        <!-- begin sidebar minify button -->
+                </ul>
+				<!-- end sidebar nav -->
+			</div>
+			<!-- end sidebar scrollbar -->
+		</div>
+		<div class="sidebar-bg"></div>
+		<!-- end #sidebar -->
+		
+		<!-- begin #content -->
+		<div id="content" class="content content-full-width">
+			<div class="p-20">
+			<!-- begin row -->
+			<div class="row">
+			    <!-- begin col-2 -->
+
+			    <!-- end col-2 -->
+			    <!-- begin col-10 -->
+			    <div class="col-md-10">
+			        <div class="email-content">
+                        <table class="table table-email">
+                            <thead>
+                                <tr>
+{#                                    <th class="email-select"><a href="#" data-click="email-select-all"><i class="fa fa-square-o fa-fw"></i></a></th>#}
+                                    <th colspan="2">
+{#                                        <div class="dropdown">#}
+                                            <a href="#" class="email-header-link">筛选条件</a>
+{#                                            <ul class="dropdown-menu">#}
+{#                                                <li class="active"><a href="#">All</a></li>#}
+{#                                                <li><a href="#">北京</a></li>#}
+{#                                                <li><a href="#">上海</a></li>#}
+{#                                                <li><a href="#">杭州</a></li>#}
+{#                                                <li><a href="#">张家口</a></li>#}
+{#                                            </ul>#}
+{#                                        </div>#}
+                                    </th>
+                                    <th>
+                                        <div class="dropdown">
+                                            <a href="#" class="email-header-link" data-toggle="dropdown">工作地点<i class="fa fa-angle-down m-l-5"></i></a>
+                                            <ul class="dropdown-menu">
+                                                <li class="active"><a href="#">All</a></li>
+                                                <li><a href="#">北京</a></li>
+                                                <li><a href="#">上海</a></li>
+                                                <li><a href="#">杭州</a></li>
+                                                <li><a href="#">张家口</a></li>
+                                            </ul>
+                                        </div>
+                                    </th>
+                                    <th>
+                                        <div class="dropdown">
+                                            <a href="#" class="email-header-link" data-toggle="dropdown">职位<i class="fa fa-angle-down m-l-5"></i></a>
+                                            <ul class="dropdown-menu">
+                                                <li class="active"><a href="#">All</a></li>
+                                                <li><a href="#">java</a></li>
+                                                <li><a href="#">C、C++、C#</a></li>
+                                                <li><a href="#">PHP</a></li>
+                                                <li><a href="#">python</a></li>
+                                                <li><a href="#">前端</a></li>
+                                            </ul>
+                                        </div>
+                                    </th>
+                                    <th>
+                                        <div class="dropdown">
+                                            <a href="#" class="email-header-link" data-toggle="dropdown">薪资范围<i class="fa fa-angle-down m-l-5"></i></a>
+                                            <ul class="dropdown-menu">
+                                                <li class="active"><a href="#">All</a></li>
+                                                <li><a href="#">5k以下</a></li>
+                                                <li><a href="#">5k-10K</a></li>
+                                                <li><a href="#">10k-15k</a></li>
+                                                <li><a href="#">15k-20k</a></li>
+                                                <li><a href="#">20k以上</a></li>
+                                            </ul>
+                                        </div>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="email-select"><a href="#" data-click="email-select-single"><i class="fa fa-square-o fa-fw"></i></a></td>
+                                    <td class="email-sender">
+                                        公司名称
+                                    </td>
+                                    <td class="email-sender">
+                                        公司所在地
+                                    </td>
+                                    <td class="email-sender">
+                                        发布的职位
+                                    </td>
+                                    <td class="email-sender">
+                                        薪资范围
+                                    </td>
+                                    <td class="email-sender">
+                                        发布时间
+                                    </td>
+                                    <td class="email-sender">
+                                        查看详情
+                                    </td>
+                                </tr>
+                                    {% for key,release in release_dict.items %}
+                                    <tr>
+                                        <td class="email-select"><a href="#" data-click="email-select-single"><i class="fa fa-square-o fa-fw"></i></a></td>
+                                        <td class="email-sender" id="company_name{{ key }}">
+                                            {{ release.company_name }}
+                                        </td>
+                                        <td class="email-sender" id="address{{ key }}">
+                                            {{ release.company_address }}
+                                        </td>
+                                        <td class="email-sender" id="position{{ key }}">
+                                            {{ release.position }}
+                                        </td>
+                                        <td class="email-sender" id="salary{{ key }}">
+                                            {{ release.salary }}
+                                        </td>
+                                        <td class="email-sender" id="date{{ key }}">
+                                            2018/5/15 20:29
+                                        </td>
+                                        <td class="email-sender" id="date{{ key }}"><a href="/bishe/positions_info/">查看职位详情
+                                        </a></td>
+                                    </tr>
+                                    {% endfor %}
+                            </tbody>
+                        </table>
+                        <div class="email-footer clearfix">
+                            <ul class="pagination pagination-sm m-t-0 m-b-0 pull-right">
+                                <li class="disabled"><a href="javascript:"><i class="fa fa-angle-double-left"></i></a></li>
+                                <li class="disabled"><a href="javascript:"><i class="fa fa-angle-left"></i></a></li>
+                                <li><a href="javascript:"><i class="fa fa-angle-right"></i></a></li>
+                                <li><a href="javascript:"><i class="fa fa-angle-double-right"></i></a></li>
+                            </ul>
+                        </div>
+			        </div>
+			    </div>
+			    <!-- end col-10 -->
+			</div>
+			<!-- end row -->
+			</div>
+		</div>
+		<!-- end #content -->
+		
+        <!-- begin theme-panel -->
+        <div class="theme-panel">
+            <a href="javascript:" data-click="theme-panel-expand" class="theme-collapse-btn"><i class="fa fa-cog"></i></a>
+            <div class="theme-panel-content">
+                <h5 class="m-t-0">Color Theme</h5>
+                <ul class="theme-list clearfix">
+                    <li class="active"><a href="javascript:" class="bg-green" data-theme="default" data-click="theme-selector" data-toggle="tooltip" data-trigger="hover" data-container="body" data-title="Default">&nbsp;</a></li>
+                    <li><a href="javascript:" class="bg-red" data-theme="red" data-click="theme-selector" data-toggle="tooltip" data-trigger="hover" data-container="body" data-title="Red">&nbsp;</a></li>
+                    <li><a href="javascript:" class="bg-blue" data-theme="blue" data-click="theme-selector" data-toggle="tooltip" data-trigger="hover" data-container="body" data-title="Blue">&nbsp;</a></li>
+                    <li><a href="javascript:" class="bg-purple" data-theme="purple" data-click="theme-selector" data-toggle="tooltip" data-trigger="hover" data-container="body" data-title="Purple">&nbsp;</a></li>
+                    <li><a href="javascript:" class="bg-orange" data-theme="orange" data-click="theme-selector" data-toggle="tooltip" data-trigger="hover" data-container="body" data-title="Orange">&nbsp;</a></li>
+                    <li><a href="javascript:" class="bg-black" data-theme="black" data-click="theme-selector" data-toggle="tooltip" data-trigger="hover" data-container="body" data-title="Black">&nbsp;</a></li>
+                </ul>
+                <div class="divider"></div>
+                <div class="row m-t-10">
+                    <div class="col-md-5 control-label double-line">Header Styling</div>
+                    <div class="col-md-7">
+                        <select name="header-styling" class="form-control input-sm">
+                            <option value="1">default</option>
+                            <option value="2">inverse</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row m-t-10">
+                    <div class="col-md-5 control-label">Header</div>
+                    <div class="col-md-7">
+                        <select name="header-fixed" class="form-control input-sm">
+                            <option value="1">fixed</option>
+                            <option value="2">default</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row m-t-10">
+                    <div class="col-md-5 control-label double-line">Sidebar Styling</div>
+                    <div class="col-md-7">
+                        <select name="sidebar-styling" class="form-control input-sm">
+                            <option value="1">default</option>
+                            <option value="2">grid</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row m-t-10">
+                    <div class="col-md-5 control-label">Sidebar</div>
+                    <div class="col-md-7">
+                        <select name="sidebar-fixed" class="form-control input-sm">
+                            <option value="1">fixed</option>
+                            <option value="2">default</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row m-t-10">
+                    <div class="col-md-5 control-label double-line">Sidebar Gradient</div>
+                    <div class="col-md-7">
+                        <select name="content-gradient" class="form-control input-sm">
+                            <option value="1">disabled</option>
+                            <option value="2">enabled</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row m-t-10">
+                    <div class="col-md-5 control-label double-line">Content Styling</div>
+                    <div class="col-md-7">
+                        <select name="content-styling" class="form-control input-sm">
+                            <option value="1">default</option>
+                            <option value="2">black</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row m-t-10">
+                    <div class="col-md-12">
+                        <a href="#" class="btn btn-inverse btn-block btn-sm" data-click="reset-local-storage"><i class="fa fa-refresh m-r-3"></i> Reset Local Storage</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end theme-panel -->
+		
+		<!-- begin scroll to top btn -->
+		<a href="javascript:" class="btn btn-icon btn-circle btn-success btn-scroll-to-top fade" data-click="scroll-top"><i class="fa fa-angle-up"></i></a>
+		<!-- end scroll to top btn -->
+	</div>
+	<!-- end page container -->
+	
+	<!-- ================== BEGIN BASE JS ================== -->
+	<script src="{% static "assets/plugins/jquery/jquery-1.9.1.min.js"%}"></script>
+	<script src="{% static "assets/plugins/jquery/jquery-migrate-1.1.0.min.js"%}"></script>
+	<script src="{% static "assets/plugins/jquery-ui/ui/minified/jquery-ui.min.js"%}"></script>
+	<script src="{% static "assets/plugins/bootstrap/js/bootstrap.min.js"%}"></script>
+	<script src="{% static "assets/plugins/slimscroll/jquery.slimscroll.min.js"%}"></script>
+	<script src="{% static "assets/plugins/jquery-cookie/jquery.cookie.js"%}"></script>
+	<!-- ================== END BASE JS ================== -->
+	
+	<!-- ================== BEGIN PAGE LEVEL JS ================== -->
+	<script src="{% static "assets/js/inbox.demo.min.js"%}"></script>
+	<script src="{% static "assets/js/apps.min.js"%}"></script>
+	<!-- ================== END PAGE LEVEL JS ================== -->
+	
+	<script>
+		$(document).ready(function() {
+			App.init();
+			Inbox.init();
+		});
+	</script>
+	<script>
+{#        function post_info() {#}
+{#            var all_info_id = "21"#}
+{#            var company_name= $("#company_name{{ key }}").val();#}
+{#            console.log(company_name)#}
+{#            var date = {"all_info":all_info_id}#}
+{#            $.ajax({#}
+{#                type: 'POST',#}
+{#                url: '/bishe/all_positions_post/',#}
+{#                dataType: 'json',#}
+{#                data: date,#}
+{#                success: function (date) {#}
+                  {#                  if (date == 1){#}
+{#                  alert(date);#}
+{#                  console.log(date);#}
+{#                  window.location.href = "/bishe/position_info/";#}
+{#              },#}
+{##}
+{##}
+{##}
+{#            })#}
+{#        }#}
+{#      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){#}
+{#      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),#}
+{#      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)#}
+{#      })(window,document,'script','../../../../www.google-analytics.com/analytics.js','ga');#}
+{#    #}
+{#      ga('create', 'UA-53034621-1', 'auto');#}
+{#      ga('send', 'pageview');#}
+    </script>
+</body>
+
+<!-- Mirrored from seantheme.com/color-admin-v1.9/admin/html/email_inbox.html by HTTrack Website Copier/3.x [XR&CO'2013], Sun, 31 Jan 2016 14:36:29 GMT -->
+</html>
+
