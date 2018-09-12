@@ -1,9 +1,0 @@
-INSERT INTO `auth_user` VALUES (1, 'pbkdf2_sha256$30000$nkA552FfSzCx$pNBJpmO0L7eKY2gb0rbbjTWvVQnpXLGqOP1MaP/GIuY=', '2018-5-30 10:15:52', 0, 'guankaixin', '', '', '', 0, 1, '2018-5-17 07:04:08');
-INSERT INTO `auth_user` VALUES (15, 'pbkdf2_sha256$30000$c2Dtt2GneIt5$DZx74X9Y7nCt4Kb7F0KwYCuUKh7PCDxnXlT6/faEOjU=', '2018-5-24 00:30:53', 0, 'zetta', '', '', '', 0, 1, '2018-5-17 07:20:31');
-INSERT INTO `auth_user` VALUES (17, 'pbkdf2_sha256$30000$DOKgaNqM6FVu$HeBQVqoXSdxAcyJ2JVLUPuu/5R7gSddvEhTVcyE0zFk=', '2018-5-30 10:16:48', 0, 'zetta1', '', '', '', 0, 1, '2018-5-17 07:21:20');
-INSERT INTO `auth_user` VALUES (18, 'pbkdf2_sha256$30000$9RPzyqxB6bse$WQNftyOsbkiK6QrnXrpAnOVGcxq79gFjYnGx8oUp6Nw=', '2018-5-30 10:17:21', 0, '北方学院', '', '', '', 0, 1, '2018-5-17 11:09:01');
-INSERT INTO `auth_user` VALUES (20, 'pbkdf2_sha256$30000$dKYIiZK1rA7q$zHWKLB0+odd75sWosFkXOI7ejqUSA0W8sOIGQrBijBE=', NULL, 0, 'guankaixin1', '', '', '', 0, 1, '2018-5-17 13:10:24');
-INSERT INTO `auth_user` VALUES (36, 'pbkdf2_sha256$30000$D8wzdOCoSoZR$Fb4sMngBbT2VZ6MSfu6Gyby/6Kp9cIXbIqWYT1wWxVE=', '2018-5-17 13:15:52', 0, 'jin', '', '', '', 0, 1, '2018-5-17 13:15:31');
-INSERT INTO `auth_user` VALUES (37, 'pbkdf2_sha256$30000$IXlJ1P9sH0Lj$EISBF2GE7Bp0f4ufY3UOuA5WehEzIsz7JaIiU7nZbIQ=', '2018-5-20 02:47:24', 0, 'zhaoyuanping', '', '', '', 0, 1, '2018-5-20 02:42:22');
-INSERT INTO `auth_user` VALUES (38, 'pbkdf2_sha256$30000$YjROdY6bwgZp$sNvcc3WOH3HiiGQ/t7U1NmDnMVLhPcFzwwPUCOTpfKs=', '2018-5-20 02:49:00', 0, 'zyh', '', '', '', 0, 1, '2018-5-20 02:43:27');
-INSERT INTO `auth_user` VALUES (39, 'pbkdf2_sha256$30000$daINZRMhhsxT$JF4gKCVrdDBthVAY7Luv95ETky6VkJGRolc6/Xh5vAE=', NULL, 0, 'duanduan', '', '', '', 0, 1, '2018-5-20 02:44:15');
